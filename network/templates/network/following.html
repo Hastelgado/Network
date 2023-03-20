@@ -1,0 +1,45 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<h1>{{currentuser.username|capfirst}}'s Followings</h1>
+
+<div id="postsdiv">
+{% for post in page_posts%}    
+
+    <div class="postdiv">
+        <span><a href="{% url 'profile' post.user.id %}">{{post.user.username|capfirst}}</a> says:</span>
+        <span class="postcontent">{{post.content}}</span>
+        <span>{{post.time}}</span>
+        <span class="likecount">Likes: {{post.users_liked.count}}</span>
+        {% if post in posts_liked %}
+        <i class="likebtn fa-solid fa-heart"></i>
+        {% else %}
+        <i class="likebtn fa-regular fa-heart"></i>
+        {% endif %}
+        <input type="hidden" class="post_id" value="{{post.id}}">
+    </div>
+    {% empty %}
+    <h3> Follow some people first to view their posts!</h3>
+
+{% endfor %}
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_posts.has_previous %}
+            <a href="?page=1">&laquo; First</a>
+            <a href="?page={{ page_posts.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_posts.number }} of {{ page_posts.paginator.num_pages }}.
+        </span>
+
+        {% if page_posts.has_next %}
+            <a href="?page={{ page_posts.next_page_number }}">Next</a>
+            <a href="?page={{ page_posts.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

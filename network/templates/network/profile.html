@@ -1,0 +1,51 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<div id="profileheader">
+    <h1>{{user.username|capfirst}}'s Profile Page</h1>
+    <input type="hidden" id="user_id" value="{{user.id}}">
+    {% if user.id != currentuser.id %}
+    <div id="followbtndiv">
+        <button id="{{btnid}}" class="btn btn-primary allbuttons">{{btnhtml}}</button>
+    </div>
+    {% endif %}
+</div>
+
+<h5>Followers: {{followersnum}}</h5>
+<h5>Following: {{followingnum}}</h5>
+
+<div id="postsdiv">
+{% for post in page_posts %}
+<div class="postdiv">
+    <span>{{user.username|capfirst}} says:</span>
+    <div class="postcontent">{{post.content}}</div>
+    <span>{{post.time}}</span>
+    <span>Likes: {{post.users_liked.count}}</span>
+    <input type="hidden" class="post_id" value="{{post.id}}">
+    {% if user.id == currentuser.id %}
+    <button class="editbtn btn btn-primary allbuttons">Edit</button>
+    {% endif %}
+</div>
+{% endfor %}
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_posts.has_previous %}
+            <a href="?page=1">&laquo; First</a>
+            <a href="?page={{ page_posts.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_posts.number }} of {{ page_posts.paginator.num_pages }}.
+        </span>
+
+        {% if page_posts.has_next %}
+            <a href="?page={{ page_posts.next_page_number }}">Next</a>
+            <a href="?page={{ page_posts.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
+{% endblock %}

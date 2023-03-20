@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+  }
+
+body{
+  background-color: rgb(29 161 242);
+}
+
+.body{
+  padding: 20px 50px 20px 50px;
+  width: 50%;
+  margin: 0 25% 0 25%;
+  background-color: rgb(255, 255, 255);
+  border-left: 2px solid gray;
+  border-right: 2px solid gray;
+
+}
+
+.navbar-brand{
+ font-size: 25px;
+}
+
+.navbar{
+  width: 50%;
+  margin: 0 25% 0 25%;
+  background-color: rgb(255, 255, 255);
+  border-left: 2px solid gray;
+  border-right: 2px solid gray;
+}
+
+#navbar{
+  width: 100%;
+}
+
+.navbar-nav{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  text-align:center;
+}
+
+
+.nav-link{
+  font-size: larger;
+  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+}
+
+.nav-link:hover{
+  background-color: rgb(29 161 242);
+  
+}
+
+h1{
+  margin: 0 0 20px 0;
+  padding-left: 25px;
+  font-size: 30px;
+}
+
+#newpostform{
+    border: 1px solid;
+    border-radius: 17px;
+    background-color: rgb(29 161 242);
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 20px 10px 20px;
+}
+
+#postbtn{
+  background-color: rgb(34, 34, 34);
+}
+
+#postsdiv{
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+}
+
+.postdiv{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(34, 34, 34);
+  border-radius: 17px;
+  color: rgb(255, 255, 255);
+  padding-bottom: 5px;
+
+}
+
+.postcontent{
+  padding: 15px 0 15px 0;
+}
+
+.postdiv > *{
+  margin-left: 15px;
+}
+
+
+.postdiv span:nth-child(1){
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.postdiv span:nth-child(2){
+  font-size: 14px;
+}
+
+.postdiv span:nth-child(3){
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.allbuttons{
+  width: 80px;
+}
+
+.likebtn{
+  all: unset;
+  margin-left: 15px;
+}
+
+.editbtn{
+  font-size: 13px;
+  width: 46px;
+  height: 33px;
+}
+
+.savebtn{
+  font-size: 13px;
+  width: 46px;
+  height: 33px;
+}
